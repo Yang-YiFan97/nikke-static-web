@@ -1,0 +1,105 @@
+/* 爱萌 NIKKE 工具箱 · 静态版 —— 深色主题 */
+:root {
+  --bg: #0e1116;
+  --card: #171c24;
+  --card2: #1d2430;
+  --line: #2a3242;
+  --text: #e8ecf2;
+  --muted: #8a94a6;
+  --accent: #38bdf8;
+  --accent-dim: #0e3a52;
+  --blue: #2563eb;
+  --blue-bar: #3b82f6;
+  --red: #ef4444;
+  --red-bar: #ef4444;
+  --gold: #f5c542;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+  font-size: 15px; line-height: 1.6;
+}
+.site-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 24px; border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; background: rgba(14,17,22,.92); backdrop-filter: blur(6px);
+  z-index: 10;
+}
+.wordmark { font-weight: 700; font-size: 17px; letter-spacing: .5px; }
+.wordmark span { color: var(--muted); font-weight: 400; font-size: 13px; }
+nav { display: flex; gap: 8px; }
+nav button {
+  background: transparent; color: var(--muted); border: 1px solid transparent;
+  padding: 7px 16px; border-radius: 8px; font-size: 14px; cursor: pointer;
+}
+nav button:hover { color: var(--text); }
+nav button.active { color: var(--accent); border-color: var(--accent-dim); background: var(--accent-dim); }
+
+main { max-width: 980px; margin: 0 auto; padding: 28px 24px 60px; }
+.view { display: none; }
+.view.active { display: block; }
+h2 { margin: 4px 0 6px; font-size: 21px; }
+.desc { color: var(--muted); font-size: 13.5px; margin: 0 0 18px; }
+.desc code { color: var(--accent); background: none; }
+
+.toolbar {
+  display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  padding: 12px 16px; margin-bottom: 18px;
+}
+.toolbar label { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
+input[type=number], input[type=text], select {
+  background: var(--card2); color: var(--text); border: 1px solid var(--line);
+  border-radius: 7px; padding: 6px 10px; font-size: 14px; width: 110px;
+}
+select { width: auto; }
+input:focus, select:focus { outline: 1px solid var(--accent); }
+.q-out { font-size: 14px; color: var(--gold); }
+
+/* 石头图表 */
+.chart-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  padding: 16px 18px; margin-bottom: 18px;
+}
+.chart-card h3 { margin: 0 0 12px; font-size: 15px; color: var(--text); }
+.chart-card h3 .badge {
+  font-size: 12px; color: #fff; border-radius: 999px; padding: 2px 10px; margin-left: 8px;
+}
+.bars { display: flex; align-items: flex-end; gap: 3px; height: 150px; }
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 0; }
+.bar { width: 100%; border-radius: 3px 3px 0 0; position: relative; transition: height .25s; }
+.bar-col .pct { font-size: 10px; color: var(--muted); margin-bottom: 3px; white-space: nowrap; overflow: visible; }
+.bar-col .num { font-size: 11px; color: var(--muted); margin-top: 5px; }
+.bar-col.hot .num { color: var(--gold); font-weight: 700; }
+.bar-col.hot .pct { color: var(--gold); }
+.x-line { display: flex; gap: 3px; margin-top: 2px; }
+.x-line span { flex: 1; text-align: center; font-size: 10px; color: var(--muted); }
+
+/* 档位表 */
+table { border-collapse: collapse; width: 100%; background: var(--card); border-radius: 10px; overflow: hidden; }
+th, td { padding: 8px 12px; text-align: center; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+th { background: var(--card2); color: var(--muted); font-weight: 600; }
+tr:last-child td { border-bottom: none; }
+td.t1 { color: #9aa3b2; }
+td.t2 { color: var(--gold); }
+td.t3 { color: #ff7a7a; font-weight: 700; }
+tr.hit td { background: var(--accent-dim); }
+tr.hit td:first-child { border-radius: 6px 0 0 6px; }
+tr.hit td:last-child { border-radius: 0 6px 6px 0; }
+.tier-note { color: var(--muted); font-size: 12.5px; margin-top: 10px; }
+
+/* 升级结果 */
+.up-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.up-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; }
+.up-card .k { color: var(--muted); font-size: 13px; }
+.up-card .v { font-size: 20px; font-weight: 700; margin-top: 2px; }
+.up-card .s { color: var(--muted); font-size: 12.5px; margin-top: 4px; }
+
+footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 12.5px; text-align: center; padding: 18px; }
+footer code { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .site-header { flex-direction: column; gap: 10px; }
+  .bars { height: 110px; }
+}

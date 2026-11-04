@@ -1,0 +1,11 @@
+{
+ "drop_rate": 0.58,
+ "pmf": [
+  0.700963,
+  0.289037,
+  0.01
+ ],
+ "battles_normal": 3,
+ "battles_double": 6,
+ "max_stone": 18
+}

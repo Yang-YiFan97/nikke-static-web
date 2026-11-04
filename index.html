@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>爱萌 NIKKE 工具箱 · 静态版</title>
+<meta name="description" content="NIKKE 装备词条档位速查、石头掉落概率、升级资源计算——纯静态离线版，无需登录。">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wordmark">爱萌工具箱<span> / NIKKE STATIC</span></div>
+  <nav>
+    <button data-view="stone" class="active">石头概率</button>
+    <button data-view="tier">档位速查</button>
+    <button data-view="upgrade">升级资源</button>
+  </nav>
+</header>
+
+<main>
+  <!-- 石头概率 -->
+  <section id="view-stone" class="view active">
+    <h2>石头掉落概率</h2>
+    <p class="desc">单次战斗 58% 掉落；掉落时 1 颗 70.0963% / 2 颗 28.9037% / 3 颗 1%。<br>
+    普通日 3 战、双倍日 6 战（次数翻倍模型）。与 bot <code>#石头概率</code> 同一数学模型。</p>
+    <div class="toolbar">
+      <label><input type="radio" name="stone-day" value="normal" checked> 普通日（3 战）</label>
+      <label><input type="radio" name="stone-day" value="double"> 双倍日（6 战）</label>
+      <label class="q">查询颗数 <input type="number" id="stone-q" min="0" max="18" value="4">
+      <span id="stone-q-out" class="q-out"></span></label>
+    </div>
+    <div id="stone-charts"></div>
+  </section>
+
+  <!-- 档位速查 -->
+  <section id="view-tier" class="view">
+    <h2>装备词条档位速查</h2>
+    <p class="desc">TIER_MAP 全 9 词条 × 15 档。输入识别到的数值，自动吸附到最近档位并判阶（与 bot 档位闸门同源）。</p>
+    <div class="toolbar">
+      <select id="tier-stat"></select>
+      <input type="text" id="tier-value" placeholder="输入数值，如 13.75" inputmode="decimal">
+      <span id="tier-out" class="q-out"></span>
+    </div>
+    <div id="tier-table"></div>
+  </section>
+
+  <!-- 升级资源 -->
+  <section id="view-upgrade" class="view">
+    <h2>升级资源计算</h2>
+    <p class="desc">按基地等级 251~1200 区间计算信用点 / 经验 / 核心尘埃需求，并按基地产出折算时长。<br>
+    credit / data 为每分钟产出，dust 为每小时产出（与 bot <code>#升级资源</code> 同源）。</p>
+    <div class="toolbar">
+      <label>当前等级 <input type="number" id="up-from" min="251" max="1200" value="500"></label>
+      <label>目标等级 <input type="number" id="up-to" min="251" max="1200" value="600"></label>
+      <label>产出基准等级 <input type="number" id="up-base" min="1" max="700" value="500"></label>
+    </div>
+    <div id="upgrade-result"></div>
+  </section>
+</main>
+
+<footer>
+  <p>纯静态版 · 数据快照 2026-11-04 · 完整版（账号/词条/打卡/抽卡分析）请用 QQ bot 发 <code>w</code> 获取地址</p>
+</footer>
+
+<script src="data/app-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
